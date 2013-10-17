@@ -31,7 +31,8 @@ namespace ARDrone.Control.Commands
             this.roll = roll;
             this.pitch = pitch;
             this.yaw = yaw;
-            this.gaz = gaz;
+            //Gaz has been changed to zero for testing, it is vertical speed
+            this.gaz = 0;
         }
 
         private void SetPrerequisites()

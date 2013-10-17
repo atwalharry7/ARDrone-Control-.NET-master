@@ -1134,5 +1134,10 @@ namespace ARDrone.UI
             droneControl.SendCommand(DroneAnimationCommand);
         }
 
+        private void Leap_Window_Start(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

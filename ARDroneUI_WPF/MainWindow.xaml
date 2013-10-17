@@ -160,6 +160,7 @@
                 <Rectangle Grid.ColumnSpan="2" Height="100" HorizontalAlignment="Left" Margin="10,10,0,0" Name="rectangle1" Stroke="Black" VerticalAlignment="Top" Width="200" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="63,619,0,0" Name="LedFrequency" VerticalAlignment="Top" Width="69" Grid.Column="1" />
                 <Button Name ="TestDroneCommand" Content="Test Drone Command" HorizontalAlignment="Left" Margin="10,652,0,0" VerticalAlignment="Top" Width="172" Height="21" />
+                <Button Content="Start Leap Control " HorizontalAlignment="Left" Margin="10,678,0,0" VerticalAlignment="Top" Width="350" Grid.ColumnSpan="2" Height="81" Click="Leap_Window_Start"/>
             </Grid>
             <DockPanel DockPanel.Dock="Top" LastChildFill="True" Margin="5">
                 <Button Name="buttonConnect" Content="Startup"  Width="75" Height="23" Canvas.Left="113" Canvas.Top="28" DockPanel.Dock="Left" Click="buttonConnect_Click" />
