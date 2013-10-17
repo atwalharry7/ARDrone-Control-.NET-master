@@ -1136,7 +1136,7 @@ namespace ARDrone.UI
 
         private void Leap_Window_Start(object sender, RoutedEventArgs e)
         {
-
+           
         }
 
     }
