@@ -48,7 +48,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeapDrone", "..\..\..\..\De
 		{92277DFC-0D55-4998-8ACF-B01F3A7FB508} = {92277DFC-0D55-4998-8ACF-B01F3A7FB508}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leap Controllor", "WpfApplication1\Leap Controllor.csproj", "{B131A6A8-F708-44AF-BA60-476DCAA9EC98}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leap Controller", "Leap Controller\Leap Controller.csproj", "{DC52FE62-89E6-4595-BB64-09232F8C55FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -303,27 +303,27 @@ Global
 		{09E84AD8-4429-4483-87EB-5399D963BD07}.Release|x64.ActiveCfg = Release|x86
 		{09E84AD8-4429-4483-87EB-5399D963BD07}.Release|x86.ActiveCfg = Release|x86
 		{09E84AD8-4429-4483-87EB-5399D963BD07}.Release|x86.Build.0 = Release|x86
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Profile|Any CPU.ActiveCfg = Release|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Profile|Any CPU.Build.0 = Release|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Profile|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Profile|Mixed Platforms.Build.0 = Release|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Profile|Win32.ActiveCfg = Release|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Profile|x64.ActiveCfg = Release|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Profile|x86.ActiveCfg = Release|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Release|Win32.ActiveCfg = Release|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Release|x64.ActiveCfg = Release|Any CPU
-		{B131A6A8-F708-44AF-BA60-476DCAA9EC98}.Release|x86.ActiveCfg = Release|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Profile|Any CPU.ActiveCfg = Release|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Profile|Any CPU.Build.0 = Release|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Profile|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Profile|Mixed Platforms.Build.0 = Release|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Profile|Win32.ActiveCfg = Release|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Profile|x64.ActiveCfg = Release|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Profile|x86.ActiveCfg = Release|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Release|Win32.ActiveCfg = Release|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Release|x64.ActiveCfg = Release|Any CPU
+		{DC52FE62-89E6-4595-BB64-09232F8C55FC}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
