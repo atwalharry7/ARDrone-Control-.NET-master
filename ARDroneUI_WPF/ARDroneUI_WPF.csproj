@@ -166,6 +166,10 @@
       <Project>{8E63741B-70D7-4FE0-A13C-BA749FEB96A4}</Project>
       <Name>HudInstruments</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WpfApplication1\Leap Controllor.csproj">
+      <Project>{b131a6a8-f708-44af-ba60-476dcaa9ec98}</Project>
+      <Name>Leap Controllor</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\SplashScreen.png" />
