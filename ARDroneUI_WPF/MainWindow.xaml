@@ -13,7 +13,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:av="clr-namespace:AviationInstruments;assembly=AviationInstruments"
-        WindowStyle="SingleBorderWindow" Title="WinARDrone Leap Controls" Width="872" Height="812" MinWidth="709" MinHeight="620" BorderThickness="1" BorderBrush="#FF232300" Background="Black" Closing="Window_Closing" Loaded="Window_Loaded" Icon="/ARDrone.UI;component/Images/Icon.png">
+        WindowStyle="SingleBorderWindow" Title="WinARDrone Leap Controls" Width="872" Height="812" MinWidth="709" WindowStartupLocation="Manual" MinHeight="620" BorderThickness="1" BorderBrush="#FF232300" Background="Black" Closing="Window_Closing" Loaded="Window_Loaded" Icon="/ARDrone.UI;component/Images/Icon.png"
+        Top="50" Left="0">
     <Grid>
         <DockPanel LastChildFill="True">
             <Grid DockPanel.Dock="Right" Width="370" Margin="5">
@@ -21,7 +22,7 @@
                     <ColumnDefinition Width="192" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                
+
                 <StackPanel Margin="0,0,0,155">
                     <GroupBox Header="Input" Foreground="Lime">
                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
@@ -36,7 +37,7 @@
                                     <Setter Property="Margin" Value="7,4,3,3" />
                                 </Style>
                             </Grid.Resources>
-                            
+
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
@@ -66,9 +67,9 @@
                                 <Style x:Key="styleContentLabel" TargetType="{x:Type Label}" >
                                     <Setter Property="Margin" Value="1" />
                                     <Setter Property="Padding" Value="1" />
-                                </Style>                          
+                                </Style>
                             </Grid.Resources>
-                            
+
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
@@ -123,7 +124,7 @@
                     <Button Name="buttonGeneralSettings" Content="General settings" Margin="5,2,5,2" Click="buttonGeneralSettings_Click" />
                     <Button Name="buttonShowConfig" Content="Show Drone config" Margin="5,2,5,2" Click="buttonShowConfig_Click" />
                 </StackPanel>
-                
+
                 <StackPanel Grid.Column="1" Margin="0,0,0,206">
                     <WindowsFormsHost Height="173" Margin="5,10,0,0">
                         <av:AttitudeIndicatorInstrumentControl x:Name="attitudeControl" Width="150" Height="173" />
@@ -154,12 +155,12 @@
                 <Label Content="Duration" Height="28" HorizontalAlignment="Left" Margin="1,592,0,0" Name="label4" VerticalAlignment="Top" Grid.Column="1" Foreground="GhostWhite"/>
                 <Label Content="seconds" HorizontalAlignment="Left" Margin="125,591,0,144" Name="label5" Grid.Column="1" Foreground="GhostWhite"/>
                 <Label Content="LED" Height="28" HorizontalAlignment="Left" Margin="1,568,0,0" Name="label6" VerticalAlignment="Top" Grid.Column="1" Foreground="GhostWhite"/>
-                <TextBox Height="23" HorizontalAlignment="Left" Margin="61,594,0,0" Name="animationDurationBox" VerticalAlignment="Top" Width="61" Foreground="GhostWhite" />
-                <TextBox Height="23" HorizontalAlignment="Left" Margin="63,594,0,0" Name="LedDuration" VerticalAlignment="Top" Width="61" Grid.Column="1" Foreground="GhostWhite"/>
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="61,594,0,0" Name="animationDurationBox" VerticalAlignment="Top" Width="61"  />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="63,594,0,0" Name="LedDuration" VerticalAlignment="Top" Width="61" Grid.Column="1" />
                 <Label Content="Frequency" Height="28" HorizontalAlignment="Left" Margin="1,618,0,0" Name="label7" VerticalAlignment="Top" Grid.Column="1" Foreground="GhostWhite"/>
                 <Rectangle Grid.ColumnSpan="2" Height="100" HorizontalAlignment="Left" Margin="10,10,0,0" Name="rectangle1" Stroke="Black" VerticalAlignment="Top" Width="200" />
-                <TextBox Height="23" HorizontalAlignment="Left" Margin="63,619,0,0" Name="LedFrequency" VerticalAlignment="Top" Width="69" Grid.Column="1" />
-                <Button Name ="TestDroneCommand" Content="Test Drone Command" HorizontalAlignment="Left" Margin="10,652,0,0" VerticalAlignment="Top" Width="172" Height="21" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="63,622,0,0" Name="LedFrequency" VerticalAlignment="Top" Width="69" Grid.Column="1" />
+                <Button Name ="TestDroneCommand" Content="Test Drone Command" HorizontalAlignment="Left" Margin="10,652,0,0" VerticalAlignment="Top" Width="172" Height="21" Click="TestDroneCommand_Click" />
                 <Button Content="Start Leap Control " HorizontalAlignment="Left" Margin="10,678,0,0" VerticalAlignment="Top" Width="350" Grid.ColumnSpan="2" Height="81" Click="Leap_Window_Start"/>
             </Grid>
             <DockPanel DockPanel.Dock="Top" LastChildFill="True" Margin="5">

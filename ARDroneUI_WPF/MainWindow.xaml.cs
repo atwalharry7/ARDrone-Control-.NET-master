@@ -33,7 +33,7 @@ using ARDrone.Control.Data;
 using ARDrone.Control.Events;
 using System.Diagnostics;
 using System.Configuration;
-
+using Leap_C;
 
 
 namespace ARDrone.UI
@@ -70,6 +70,21 @@ namespace ARDrone.UI
         String snapshotFilePath = string.Empty;
         int snapshotFileCount = 0;
 
+        private int LeapWindowCount = 0;
+
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+
+        public void Receive_Leap_Command(FlightModeCommand a)
+        {
+            droneControl.SendCommand(a);
+        }
+
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+
         public MainWindow()
         {
             InitializeDroneControl();
@@ -93,7 +108,7 @@ namespace ARDrone.UI
 
             DroneAnimationComboBox.Items.Add("Phi M30 Deg");
             DroneAnimationComboBox.Items.Add("Phi 30 Deg");
-            
+
             DroneAnimationComboBox.Items.Add("Theta M30 Deg");
             DroneAnimationComboBox.Items.Add("Theta 30 Deg");
 
@@ -367,6 +382,7 @@ namespace ARDrone.UI
 
             if (droneControl.IsCommandPossible(flightMoveCommand))
                 droneControl.SendCommand(flightMoveCommand);
+            UpdateUIAsync("Drone Being sent Command" + " Roll = " + roll );
         }
 
         private void UpdateUIAsync(String message)
@@ -1027,7 +1043,7 @@ namespace ARDrone.UI
 
         private void button3_Click(object sender, RoutedEventArgs e)
         {
-            
+
 
         }
 
@@ -1042,7 +1058,7 @@ namespace ARDrone.UI
         private void button6_Click(object sender, RoutedEventArgs e)
         {
 
-            DroneAnimation animation = ARDrone.Control.Commands.DroneAnimation.WAVE; 
+            DroneAnimation animation = ARDrone.Control.Commands.DroneAnimation.WAVE;
             int miliseconds = Convert.ToInt16(animationDurationBox.Text.ToString()) * 1000;
 
             switch (DroneAnimationComboBox.SelectedIndex)
@@ -1136,8 +1152,31 @@ namespace ARDrone.UI
 
         private void Leap_Window_Start(object sender, RoutedEventArgs e)
         {
-           
+            //The LeapWindowCount keeps track of how many windows are open, it its not zero, then don't open anymore windows
+            if (LeapWindowCount != 0)
+            {
+                //Do nothing
+            }
+            else
+            {
+                Leap_C.MainWindow leapwindow = new Leap_C.MainWindow();
+                leapwindow.Show();
+                //First window creation, add one to the count
+                LeapWindowCount++;
+            }
         }
+
+        private void TestDroneCommand_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < 1; i++)
+            {
+                FlightMoveCommand MoveForward = new FlightMoveCommand(0, 1, 0, 0);
+                droneControl.SendCommand(MoveForward);
+            }
+
+        }
+
+
 
     }
 }
