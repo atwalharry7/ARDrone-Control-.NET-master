@@ -16,7 +16,6 @@ using System.Windows.Forms;
 using Microsoft.DirectX.DirectInput;
 using System.IO;
 using System.Xml.Serialization;
-using WiimoteLib;
 using ARDrone.Input.Utils;
 
 namespace ARDrone.Input
@@ -116,7 +115,7 @@ namespace ARDrone.Input
 
             newDevices.AddRange(KeyboardInput.GetNewInputDevices(windowHandle, inputDevices));
             newDevices.AddRange(JoystickInput.GetNewInputDevices(windowHandle, inputDevices));
-            newDevices.AddRange(WiiMoteInput.GetNewInputDevices(windowHandle, inputDevices));
+            //newDevices.AddRange(WiiMoteInput.GetNewInputDevices(windowHandle, inputDevices));
             //newDevices.AddRange(SpeechInput.GetNewInputDevices(windowHandle, inputDevices));
 
             foreach (GenericInput inputDevice in newDevices)
@@ -133,8 +132,8 @@ namespace ARDrone.Input
                 typeToSearchFor = typeof(JoystickInput);
             else if (input.GetType() == typeof(JoystickInput))
                 typeToSearchFor = typeof(SpeechInput);
-            else if (input.GetType() == typeof(SpeechInput))
-                typeToSearchFor = typeof(WiiMoteInput);
+            //else if (input.GetType() == typeof(SpeechInput))
+             //   typeToSearchFor = typeof(WiiMoteInput);
             else
             {
                 Console.WriteLine("Added " + input.DeviceName + " at last position");
@@ -325,11 +324,11 @@ namespace ARDrone.Input
         {
             for (int i = 0; i < inputDevices.Count; i++)
             {
-                if (inputDevices[i] is WiiMoteInput)
-                {
-                    WiiMoteInput wiimoteInput = (WiiMoteInput)inputDevices[i];
-                    wiimoteInput.SetLEDs(isConnected, isFlying, isHovering, isEmergency);
-                }
+                //if (inputDevices[i] is WiiMoteInput)
+                //{
+                //    WiiMoteInput wiimoteInput = (WiiMoteInput)inputDevices[i];
+                //    wiimoteInput.SetLEDs(isConnected, isFlying, isHovering, isEmergency);
+               // }
             }
         }
 

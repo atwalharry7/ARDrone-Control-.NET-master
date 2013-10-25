@@ -77,10 +77,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CoordinateConverter.cs" />
+    <Compile Include="DroneState.cs" />
     <Compile Include="LeapClass2.cs" />
-    <Compile Include="LeapMainWindow.xaml.cs">
-      <DependentUpon>LeapMainWindow.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="LeapMainWindow.cs" />
     <Compile Include="Leap_C.cs" />
     <Compile Include="Utils\EnumDisplayer.cs" />
     <Compile Include="Bindings\GeneralBinding.cs" />
@@ -107,10 +106,6 @@
     <Page Include="InputConfigWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LeapMainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

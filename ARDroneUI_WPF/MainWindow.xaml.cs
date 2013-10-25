@@ -40,6 +40,8 @@ namespace ARDrone.UI
 {
     public partial class MainWindow : Window
     {
+        public DroneState CurrentDroneState = DroneState.UNKNOWN;
+
         private readonly TimeSpan booleanInputTimeout = new TimeSpan(0, 0, 0, 0, 250);
 
         private delegate void OutputEventHandler(String output);
@@ -62,6 +64,7 @@ namespace ARDrone.UI
         private DroneConfig currentDroneConfig;
         private HudConfig currentHudConfig;
 
+        Leap_C.LeapMainWindow leapwindow;
 
         int frameCountSinceLastCapture = 0;
         DateTime lastFrameRateCaptureTime;
@@ -276,6 +279,8 @@ namespace ARDrone.UI
             timerVideoUpdate.Start();
 
             lastFrameRateCaptureTime = DateTime.Now;
+            CurrentDroneState = DroneState.CONNECTED;
+
         }
 
         private void Disconnect()
@@ -290,6 +295,7 @@ namespace ARDrone.UI
 
             droneControl.Disconnect();
             UpdateUISync("Disconnecting from drone");
+            CurrentDroneState = DroneState.OFFLINE;
         }
 
         private void ChangeCamera()
@@ -303,7 +309,7 @@ namespace ARDrone.UI
             UpdateUIAsync("Changing camera");
         }
 
-        private void Takeoff()
+        public void Takeoff()
         {
             Command takeOffCommand = new FlightModeCommand(DroneFlightMode.TakeOff);
 
@@ -314,9 +320,11 @@ namespace ARDrone.UI
 
 
             UpdateUIAsync("Taking off");
+            CurrentDroneState = DroneState.FLYING;
+
         }
 
-        private void Land()
+        public void Land()
         {
             Command landCommand = new FlightModeCommand(DroneFlightMode.Land);
 
@@ -325,9 +333,10 @@ namespace ARDrone.UI
 
             droneControl.SendCommand(landCommand);
             UpdateUIAsync("Landing");
+            CurrentDroneState = DroneState.LANDED;
         }
 
-        private void Emergency()
+        public void Emergency()
         {
             Command emergencyCommand = new FlightModeCommand(DroneFlightMode.Emergency);
 
@@ -341,7 +350,7 @@ namespace ARDrone.UI
             UpdateUIAsync("Sending emergency signal");
         }
 
-        private void FlatTrim()
+        public void FlatTrim()
         {
             Command resetCommand = new FlightModeCommand(DroneFlightMode.Reset);
             Command flatTrimCommand = new FlatTrimCommand();
@@ -354,7 +363,7 @@ namespace ARDrone.UI
             UpdateUIAsync("Sending flat trim");
         }
 
-        private void EnterHoverMode()
+        public void EnterHoverMode()
         {
             Command enterHoverModeCommand = new HoverModeCommand(DroneHoverMode.Hover);
 
@@ -365,7 +374,7 @@ namespace ARDrone.UI
             UpdateUIAsync("Entering hover mode");
         }
 
-        private void LeaveHoverMode()
+        public void LeaveHoverMode()
         {
             Command leaveHoverModeCommand = new HoverModeCommand(DroneHoverMode.StopHovering);
 
@@ -376,21 +385,26 @@ namespace ARDrone.UI
             UpdateUIAsync("Leaving hover mode");
         }
 
-        private void Navigate(float roll, float pitch, float yaw, float gaz)
+        public void Navigate(float roll, float pitch, float yaw, float gaz)
         {
             FlightMoveCommand flightMoveCommand = new FlightMoveCommand(roll, pitch, yaw, gaz);
 
             if (droneControl.IsCommandPossible(flightMoveCommand))
                 droneControl.SendCommand(flightMoveCommand);
-            UpdateUIAsync("Drone Being sent Command" + " Roll = " + roll );
+            //UpdateUIAsync("Drone Being sent Command" + " Roll= " + roll + " Pitch=" + pitch + " yaw=" + yaw + " gaz=" + gaz );
         }
 
-        private void UpdateUIAsync(String message)
+        public void updatebox(String x)
+        { 
+            UpdateUIAsync(x);
+        }
+
+        public void UpdateUIAsync(String message)
         {
             Dispatcher.BeginInvoke(new OutputEventHandler(UpdateUISync), message);
         }
 
-        private void UpdateUISync(String message)
+        public void UpdateUISync(String message)
         {
             textBoxOutput.AppendText(message + "\r\n");
             scrollViewerOutput.ScrollToBottom();
@@ -398,7 +412,7 @@ namespace ARDrone.UI
             UpdateInteractiveElements();
         }
 
-        private void UpdateInteractiveElements()
+        public void UpdateInteractiveElements()
         {
             inputManager.SetFlags(droneControl.IsConnected, droneControl.IsEmergency, droneControl.IsFlying, droneControl.IsHovering);
 
@@ -428,7 +442,7 @@ namespace ARDrone.UI
             else { labelVideoStatus.Content = "Idling ..."; }
         }
 
-        private void UpdateStatus()
+        public void UpdateStatus()
         {
             if (!droneControl.IsConnected)
             {
@@ -463,7 +477,7 @@ namespace ARDrone.UI
             UpdateCurrentBooleanInputState();
         }
 
-        private void ChangeCameraStatus()
+        public void ChangeCameraStatus()
         {
             if (droneControl.CurrentCameraType == DroneCameraMode.FrontCamera)
             {
@@ -487,7 +501,7 @@ namespace ARDrone.UI
             }
         }
 
-        private void UpdateHudStatus()
+        public void UpdateHudStatus()
         {
             if (droneControl.IsConnected)
             {
@@ -500,7 +514,7 @@ namespace ARDrone.UI
             }
         }
 
-        private int GetCurrentFrameRate()
+        public int GetCurrentFrameRate()
         {
             int timePassed = (int)(DateTime.Now - lastFrameRateCaptureTime).TotalMilliseconds;
             int frameRate = frameCountSinceLastCapture * 1000 / timePassed;
@@ -512,7 +526,7 @@ namespace ARDrone.UI
             return averageFrameRate;
         }
 
-        private void UpdateDroneState(InputState inputState)
+        public void UpdateDroneState(InputState inputState)
         {
             labelInputRoll.Content = String.Format("{0:+0.000;-0.000;+0.000}", inputState.Roll);
             labelInputPitch.Content = String.Format("{0:+0.000;-0.000;+0.000}", -inputState.Pitch);
@@ -1152,31 +1166,33 @@ namespace ARDrone.UI
 
         private void Leap_Window_Start(object sender, RoutedEventArgs e)
         {
-            //The LeapWindowCount keeps track of how many windows are open, it its not zero, then don't open anymore windows
-            if (LeapWindowCount != 0)
-            {
-                //Do nothing
-            }
-            else
-            {
-                Leap_C.MainWindow leapwindow = new Leap_C.MainWindow();
-                leapwindow.Show();
-                //First window creation, add one to the count
-                LeapWindowCount++;
-            }
+            leapwindow = new Leap_C.LeapMainWindow(this);
         }
 
         private void TestDroneCommand_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < 1; i++)
             {
-                FlightMoveCommand MoveForward = new FlightMoveCommand(0, 1, 0, 0);
+                FlightMoveCommand MoveForward = new FlightMoveCommand(0, 0, 0, -0.1f);
                 droneControl.SendCommand(MoveForward);
             }
 
         }
 
+        public void set_Drone_command(float roll, float pitch, float yaw, float gaz)
+        {
+            FlightMoveCommand MoveForward = new FlightMoveCommand(roll, pitch, yaw, gaz);
+            droneControl.SendCommand(MoveForward);
+            //Dispatcher.BeginInvoke(new OutputEventHandler(UpdateUISync), message);
+        }
 
+        //
+        public void Ascend(float rate)
+        {
+            FlightMoveCommand Ascend = new FlightMoveCommand(0, 0, 0, rate);
+            droneControl.SendCommand(Ascend);
+            
+        }
 
     }
 }

@@ -19,11 +19,11 @@ namespace Leap_C
 
         private DroneControl droneControl;
         private delegate void OutputEventHandler(String output);
-     
+        
 
         public void Init_AR_Drone()
         {
-  
+            
         }
 
         public int Roll_AR_Drone()
@@ -53,16 +53,32 @@ namespace Leap_C
 
         public void AR_Drone_Takeoff()
         {
+            Command takeOffCommand = new FlightModeCommand(DroneFlightMode.TakeOff);
 
+            if (!droneControl.IsCommandPossible(takeOffCommand))
+                return;
+
+            droneControl.SendCommand(takeOffCommand);
         }
 
         public void AR_Drone_Land()
         {
+            Command landcommand = new FlightModeCommand(DroneFlightMode.Land);
 
+            if (!droneControl.IsCommandPossible(landcommand))
+                return;
+
+            droneControl.SendCommand(landcommand);
         }
 
         public void AR_Drone_FlatTrim()
         {
+            Command FlatTrim = new FlightModeCommand(DroneFlightMode.Reset);
+
+            if (!droneControl.IsCommandPossible(FlatTrim))
+                return;
+
+            droneControl.SendCommand(FlatTrim);
 
         }
         public void set_Drone_command(double roll, double pitch, double yaw, double gaz)
